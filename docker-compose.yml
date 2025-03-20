@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  cockroachdb:
+    image: cockroachdb/cockroach:v22.1.0  # Verilen container image versiyonu
+    container_name: cockroachdb
+    ports:
+      - "26257:26257"  # CockroachDB ana portu
+      - "9090:8080"    # Web arayüzü portu, verilen port numarasına göre 9090 olarak ayarladım
+    command: start-single-node --insecure  # Docker container'ınızda kullanılan komut
+    environment:
+      - COCKROACH_CHANNEL=official-docker  # Belirtilen environment değişkeni
+    volumes:
+      - cockroach-data:/cockroach/cockroach-data  # Veritabanı verilerini kalıcı tutmak için volume
+    networks:
+      - db_network  # Network yapılandırması
+
+volumes:
+  cockroach-data:  # Veritabanı verilerinin tutulacağı volume
+    driver: local
+
+networks:
+  db_network:
+    driver: bridge  # Docker'ın default ağ sürücüsü

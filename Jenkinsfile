@@ -31,14 +31,5 @@ pipeline {
                 }
             }
         }
-
-        stage('Stop Containers') {
-            steps {
-                script {
-                    // Docker Compose ile konteynerları durdur
-                    bat "\"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker-compose.exe\" -f \"${DOCKER_COMPOSE}\" down"
-                }
-            }
-        }
     }
 }

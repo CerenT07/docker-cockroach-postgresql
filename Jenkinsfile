@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Docker Compose komut dosyasının yolu Windows'a uygun şekilde belirlenmeli
-        DOCKER_COMPOSE = "C:\\Users\\HP\\docker-cockroach-postgresql"  // Docker Compose'un yolu
+        DOCKER_COMPOSE = "C:\\Users\\HP\\docker-cockroach-postgresql\\docker-compose.yml"  // Docker Compose'un yolu
     }
 
     stages {
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // Docker Compose ile container'ı başlat
-                    bat "\"${DOCKER_COMPOSE}\" up -d"
+                    bat "\"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker-compose.exe\" -f \"${DOCKER_COMPOSE}\" up -d"
                 }
             }
         }
@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     // Docker Compose ile konteynerları durdur
-                    bat "\"${DOCKER_COMPOSE}\" down"
+                    bat "\"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker-compose.exe\" -f \"${DOCKER_COMPOSE}\" down"
                 }
             }
         }

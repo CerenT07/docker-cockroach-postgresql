@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Docker Compose komut dosyasının yolu Windows'a uygun şekilde belirlenmeli
-        DOCKER_COMPOSE = 'C:\\Users\\HP\\docker-cockroach-postgresql'  // Docker Compose'un yolu
+        DOCKER_COMPOSE = "C:\\Users\\HP\\docker-cockroach-postgresql"  // Docker Compose'un yolu
     }
 
     stages {
